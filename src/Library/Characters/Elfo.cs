@@ -2,14 +2,7 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    /*
-        Para la parte 3 decidimos implementar los metodos a 
-        esta clase porque la consideramos la experta
-        en la informacion que se necesita para poder llevarlos a cabo.
-        A partir de este se rompe el SRP ya que hay varias
-        razones de cambio pero lo vimos necesario.
-    */
-    public class Wizard
+    public class Elfo : ICharacter
     {
         private string nombre;
         public string Nombre
@@ -26,7 +19,7 @@ namespace Roleplay_Prog.Library
                 }
             }
         }
-        private int vida = 80;
+        private int vida = 90;
         public int Vida
         {
             get
@@ -45,31 +38,26 @@ namespace Roleplay_Prog.Library
                 }
             }
         }
-        public LibroHechizos LibroHechizos
-        {
-            get; set;
-        }
-        public TunicaCuero ItemDef
-        {
-            get; set;
-        }
-        public Wizard(string nombre)
+        public IItem ItemOf{get;set;}
+        public IItem ItemDef{get;set;}
+
+        public Elfo(string nombre)
         {
             this.Nombre = nombre;
         }
 
-        public void CambiarLibroHechizos(LibroHechizos libroHechizos)
+        public void CambiarItemOf(IItem arco)
         {
-            this.LibroHechizos = libroHechizos;
+            this.ItemOf = arco;
         }
 
-        public void QuitarLibroHechizos()
+        public void QuitarItemOf()
         {
-            this.LibroHechizos = null;
+            this.ItemOf = null;
         }
-        public void CambiarItemDef(TunicaCuero tunicaCuero)
+        public void CambiarItemDef(IItem armadura)
         {
-            this.ItemDef = tunicaCuero;
+            this.ItemDef = armadura;
         }
 
         public void QuitarItemDef()
@@ -79,22 +67,21 @@ namespace Roleplay_Prog.Library
 
         public int GetAtaque()
         {
-            return this.LibroHechizos.AtaqueSpell();
+            return this.ItemOf.Ataque;
         }
 
-        public void DanioRecibido(int danio)
+        public void Atacar(ICharacter chara)
         {
-            if(this.ItemDef.Defensa < danio)
+            if(chara.ItemDef.Defensa < this.GetAtaque() )
             {
-                danio -= this.ItemDef.Defensa;
-                this.Vida -= danio;
+                int danio = this.GetAtaque() - chara.ItemDef.Defensa;
+                chara.Vida -= danio;
             }
         }
 
         public void Curarse()
         {
-            this.Vida = 80;
+            this.vida = 90;
         }
     }
-
 }

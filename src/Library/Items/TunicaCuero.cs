@@ -2,7 +2,7 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    public class Mazo
+    public class TunicaCuero : IItem
     {
         private int ataque;
         public int Ataque
@@ -13,7 +13,7 @@ namespace Roleplay_Prog.Library
             }
             set
             {
-                if(value >= 0)
+                if(value >=0)
                 {
                     this.ataque = value;
                 }
@@ -42,11 +42,10 @@ namespace Roleplay_Prog.Library
                 } 
             }
         }
-
-        public Mazo(int ataque, int defensa)
+        public TunicaCuero(int aAtaque, int aDefensa)
         {
-            this.Ataque = ataque;
-            this.Defensa = defensa;
+            this.Ataque = aAtaque;
+            this.Defensa = aDefensa;
         }
     }
 }

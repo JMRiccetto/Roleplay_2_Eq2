@@ -2,7 +2,7 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    public class Arco
+    public class Yelmo : IItem
     {
         private int ataque;
         public int Ataque
@@ -43,7 +43,7 @@ namespace Roleplay_Prog.Library
             }
         }
 
-        public Arco(int ataque, int defensa)
+        public Yelmo(int ataque, int defensa)
         {
             this.Ataque = ataque;
             this.Defensa = defensa;

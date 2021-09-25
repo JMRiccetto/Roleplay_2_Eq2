@@ -2,7 +2,7 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    public class Escudo
+    public class Escudo : IItem
 
         {
             

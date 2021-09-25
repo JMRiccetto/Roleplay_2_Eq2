@@ -9,14 +9,16 @@ namespace Test.Library
     public class ElfoTest
     {
         private Elfo elfo;
+        private ICharacter dummy;
         [SetUp]
         public void Setup()
         {
             this.elfo = new Elfo("Elfo1");
-            Arco arco = new Arco(20,0);
+            Arco arco = new Arco(50,0);
             this.elfo.CambiarItemOf(arco);
             Armadura armadura = new Armadura(0,20);
             this.elfo.CambiarItemDef(armadura);
+            this.dummy = new Wizard("Jose");
         }
         /*
             Es necesario probar la asignacion de un nombre valido para
@@ -111,37 +113,45 @@ namespace Test.Library
         }
         /*
             Es necesario probar este metodo para confirmar que
-            al recibir un ataque menor o igual a la armadura la 
-            vida no se ve afectada
+            al atacar a otro personaje, con un ataque menor 
+            a su armadura, la vida de este no se ve afectada
         */
         [Test]
-        public void DanioRecibidoMenorOIgualQueArmaduraTest()
+        public void DanioAtacarMenorOIgualQueArmaduraTest()
         {
-            this.elfo.DanioRecibido(20);
-            Assert.AreEqual(this.elfo.Vida, 90);
+            IItem tunicaCuero = new TunicaCuero(0,60);
+            this.dummy.CambiarItemDef(tunicaCuero);
+            this.elfo.Atacar(this.dummy);
+            Assert.AreEqual(this.dummy.Vida, 80);
         }
         /*
             Es necesario probar este metodo para confirmar que
-            al recibir un ataque mayor a la armadura la vida
-            se ve afectada
+            al atacar a otro personaje, con un ataque mayor 
+            a su armadura, la vida de este se ve afectada
         */
         [Test]
-        public void DanioRecibidoMayorQueArmaduraTest()
+        public void DanioAtacarMayorQueArmaduraTest()
         {
-            this.elfo.DanioRecibido(40);
-            Assert.AreEqual(this.elfo.Vida, 70);
+            IItem tunicaCuero = new TunicaCuero(0,20);
+            this.dummy.CambiarItemDef(tunicaCuero);
+            this.elfo.Atacar(this.dummy);
+            Assert.AreEqual(this.dummy.Vida, 50);
         }
         /*
             Es necesario probar este metodo para confirmar que
-            al recibir un ataque mayor a la suma de armadura y vida
-            esta ultima queda en 0
+            al atacar a otro personaje, con un ataque mayor 
+            a la suma de su armadura y vida, la vida de este 
+            queda en 0
         */
         [Test]
-        public void DanioRecibidoMayorQueArmaduraYVidaTest()
+        public void DanioAtacarMayorQueArmaduraYVidaTest()
         {
-            this.elfo.DanioRecibido(300);
-            Assert.AreEqual(this.elfo.Vida, 0);
-            
+            IItem tunicaCuero = new TunicaCuero(0,0);
+            this.dummy.CambiarItemDef(tunicaCuero);
+            IItem mazo2 = new Mazo(80,0);
+            this.elfo.CambiarItemOf(mazo2);
+            this.elfo.Atacar(this.dummy);
+            Assert.AreEqual(this.dummy.Vida, 0);
         }
         /*
             Es necesario probar este metodo para confirmar que al curarse queda con la misma vida inicial.

@@ -1,19 +1,25 @@
-using System;
+using System.Collections.Generic;
 
 namespace Roleplay_Prog.Library
 {
-    public class Armadura
+    public class LibroHechizos : IItem
     {
+        public List<Spell> Spells { get; set; }
         private int ataque;
         public int Ataque
         {
             get
             {
-                return this.ataque;
+                int value = 0;
+                foreach (Spell spell in this.Spells)
+                {
+                    value += spell.Ataque;
+                }
+                return value;
             }
             set
             {
-                if(value >=0)
+                if(value >= 0)
                 {
                     this.ataque = value;
                 }
@@ -28,7 +34,12 @@ namespace Roleplay_Prog.Library
         {
             get
             {
-                return this.defensa;
+                int value = 0;
+                foreach (Spell spell in this.Spells)
+                {
+                    value += spell.Defensa;
+                }
+                return value;
             }
             set
             {
@@ -39,14 +50,12 @@ namespace Roleplay_Prog.Library
                 else
                 {
                     this.defensa = 0;
-                } 
+                }
             }
         }
-
-        public Armadura(int ataque, int defensa)
+        public void AniadirSpell(Spell spell)
         {
-            this.Ataque = ataque;
-            this.Defensa = defensa;
+            this.Spells.Add(spell);
         }
     }
 }
