@@ -14,9 +14,9 @@ namespace Test.Library
         public void Setup()
         {
             this.enano = new Enano("Robertinho");
-            Cuchillo cuchillo = new Cuchillo(50,0);
+            Cuchillo cuchillo = new Cuchillo(50);
             this.enano.CambiarItemOf(cuchillo);
-            Escudo escudo = new Escudo(0,30);
+            Escudo escudo = new Escudo(30);
             this.enano.CambiarItemDef(escudo);
             this.dummy = new Wizard("Jose");
 
@@ -77,7 +77,7 @@ namespace Test.Library
         [Test]
         public void CambiarItemOfTest()
         {
-            Cuchillo cuchilloNue = new Cuchillo(40,0);
+            Cuchillo cuchilloNue = new Cuchillo(40);
             this.enano.CambiarItemOf(cuchilloNue);
             Assert.AreEqual(this.enano.GetAtaque(), cuchilloNue.Ataque);
         }
@@ -98,7 +98,7 @@ namespace Test.Library
          [Test]
         public void CambiarItemDefTest()
         {
-            Escudo escudoNue = new Escudo(0,50);
+            Escudo escudoNue = new Escudo(50);
             this.enano.CambiarItemDef(escudoNue);
             Assert.AreEqual(this.enano.ItemDef, escudoNue);
         }
@@ -120,7 +120,7 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMenorOIgualQueArmaduraTest()
         {
-            IItem tunicaCuero = new TunicaCuero(0,60);
+            IItemDefensa tunicaCuero = new TunicaCuero(60);
             this.dummy.CambiarItemDef(tunicaCuero);
             this.enano.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 80);
@@ -133,7 +133,7 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMayorQueArmaduraTest()
         {
-            IItem tunicaCuero = new TunicaCuero(0,20);
+            IItemDefensa tunicaCuero = new TunicaCuero(20);
             this.dummy.CambiarItemDef(tunicaCuero);
             this.enano.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 50);
@@ -147,9 +147,9 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMayorQueArmaduraYVidaTest()
         {
-            IItem tunicaCuero = new TunicaCuero(0,0);
+            IItemDefensa tunicaCuero = new TunicaCuero(0);
             this.dummy.CambiarItemDef(tunicaCuero);
-            IItem mazo2 = new Mazo(80,0);
+            IItemAtaque mazo2 = new Mazo(80);
             this.enano.CambiarItemOf(mazo2);
             this.enano.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 0);

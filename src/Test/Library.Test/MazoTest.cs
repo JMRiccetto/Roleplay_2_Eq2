@@ -11,7 +11,7 @@ namespace Test.Library
         [SetUp]
         public void Setup()
         {
-            this.mazo = new Mazo(40,0);
+            this.mazo = new Mazo(40);
         }
         /*
             Es necesario probar la asignacion de un ataque valido para
@@ -32,26 +32,6 @@ namespace Test.Library
         {
             this.mazo.Ataque = -10;
             Assert.AreEqual(this.mazo.Ataque, 0);
-        }
-        /*
-            Es necesario probar la asignacion de una defensa valida para
-            poder confirmar que el setter funciona correctamente
-        */
-        [Test]
-        public void AsignarDefensaValida()
-        {
-            this.mazo.Defensa = 30;
-            Assert.AreEqual(this.mazo.Defensa, 30);
-        }
-        /*
-            Es necesario probar la asignacion de una defensa invalida para
-            poder confirmar que el setter funciona correctamente
-        */
-        [Test]
-        public void AsignarDefensaNegativa()
-        {
-            this.mazo.Defensa = -20;
-            Assert.AreEqual(this.mazo.Defensa, 0);
         }
     }
 

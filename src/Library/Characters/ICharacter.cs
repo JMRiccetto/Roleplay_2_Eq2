@@ -6,14 +6,14 @@ namespace Roleplay_Prog.Library
     {
         string Nombre {get;set;}
         int Vida{get;set;}
-        IItem ItemOf{get;set;}
-        IItem ItemDef{get;set;}
+        IItemAtaque ItemOf{get;set;}
+        IItemDefensa ItemDef{get;set;}
 
-        void CambiarItemOf(IItem a);
+        void CambiarItemOf(IItemAtaque a);
 
         void QuitarItemOf();
         
-        void CambiarItemDef(IItem a);
+        void CambiarItemDef(IItemDefensa a);
         
         void QuitarItemDef();
 

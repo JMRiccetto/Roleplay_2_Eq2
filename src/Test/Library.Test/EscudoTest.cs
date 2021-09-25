@@ -12,27 +12,7 @@ namespace Test.Library
         [SetUp]
         public void Setup()
         {
-            this.escudo = new Escudo(0,40);
-        }
-        /*
-            Es necesario probar la asignacion de un ataque valido para
-            poder confirmar que el setter funciona correctamente
-        */
-        [Test]
-        public void AsignarAtaqueValido()
-        {
-            this.escudo.Ataque = 20;
-            Assert.AreEqual(this.escudo.Ataque, 20);
-        }
-        /*
-            Es necesario probar la asignacion de un ataque invalido para
-            poder confirmar que el setter funciona correctamente
-        */
-        [Test]
-        public void AsignarAtaqueNegativo()
-        {
-            this.escudo.Ataque = -20;
-            Assert.AreEqual(this.escudo.Ataque, 0);
+            this.escudo = new Escudo(40);
         }
         /*
             Es necesario probar la asignacion de una defensa valida para

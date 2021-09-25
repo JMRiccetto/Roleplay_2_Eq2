@@ -14,9 +14,9 @@ namespace Test.Library
         public void Setup()
         {
             this.elfo = new Elfo("Elfo1");
-            Arco arco = new Arco(50,0);
+            Arco arco = new Arco(50);
             this.elfo.CambiarItemOf(arco);
-            Armadura armadura = new Armadura(0,20);
+            Armadura armadura = new Armadura(20);
             this.elfo.CambiarItemDef(armadura);
             this.dummy = new Wizard("Jose");
         }
@@ -76,7 +76,7 @@ namespace Test.Library
         [Test]
         public void CambiarItemOfTest()
         {
-            Arco arcoNue = new Arco(60,0);
+            Arco arcoNue = new Arco(60);
             this.elfo.CambiarItemOf(arcoNue);
             Assert.AreEqual(this.elfo.GetAtaque(), arcoNue.Ataque);
         }
@@ -97,7 +97,7 @@ namespace Test.Library
          [Test]
         public void CambiarItemDefTest()
         {
-            Armadura armaduraNue = new Armadura(0,40);
+            Armadura armaduraNue = new Armadura(40);
             this.elfo.CambiarItemDef(armaduraNue);
             Assert.AreEqual(this.elfo.ItemDef, armaduraNue);
         }
@@ -119,7 +119,7 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMenorOIgualQueArmaduraTest()
         {
-            IItem tunicaCuero = new TunicaCuero(0,60);
+            IItemDefensa tunicaCuero = new TunicaCuero(60);
             this.dummy.CambiarItemDef(tunicaCuero);
             this.elfo.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 80);
@@ -132,7 +132,7 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMayorQueArmaduraTest()
         {
-            IItem tunicaCuero = new TunicaCuero(0,20);
+            IItemDefensa tunicaCuero = new TunicaCuero(20);
             this.dummy.CambiarItemDef(tunicaCuero);
             this.elfo.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 50);
@@ -146,9 +146,9 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMayorQueArmaduraYVidaTest()
         {
-            IItem tunicaCuero = new TunicaCuero(0,0);
+            IItemDefensa tunicaCuero = new TunicaCuero(0);
             this.dummy.CambiarItemDef(tunicaCuero);
-            IItem mazo2 = new Mazo(80,0);
+            IItemAtaque mazo2 = new Mazo(80);
             this.elfo.CambiarItemOf(mazo2);
             this.elfo.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 0);

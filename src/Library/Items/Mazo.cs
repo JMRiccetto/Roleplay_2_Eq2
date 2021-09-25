@@ -2,7 +2,7 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    public class Mazo : IItem
+    public class Mazo : IItemAtaque
     {
         private int ataque;
         public int Ataque
@@ -23,30 +23,10 @@ namespace Roleplay_Prog.Library
                 }
             }
         }
-        private int defensa;
-        public int Defensa
-        {
-            get
-            {
-                return this.defensa;
-            }
-            set
-            {
-                if(value >=0)
-                {
-                    this.defensa = value;
-                }
-                else
-                {
-                    this.defensa = 0;
-                } 
-            }
-        }
 
-        public Mazo(int ataque, int defensa)
+        public Mazo(int ataque)
         {
             this.Ataque = ataque;
-            this.Defensa = defensa;
         }
     }
 }

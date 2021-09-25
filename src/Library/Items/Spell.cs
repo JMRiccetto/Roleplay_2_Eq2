@@ -2,7 +2,7 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    public class Spell : IItem
+    public class Spell : IItemAtaque, IItemDefensa
     {
         private int ataque;
         public int Ataque

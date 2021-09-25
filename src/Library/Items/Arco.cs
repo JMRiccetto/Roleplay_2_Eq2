@@ -2,7 +2,7 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    public class Arco : IItem
+    public class Arco : IItemAtaque
     {
         private int ataque;
         public int Ataque
@@ -23,30 +23,10 @@ namespace Roleplay_Prog.Library
                 }
             }
         }
-        private int defensa;
-        public int Defensa
-        {
-            get
-            {
-                return this.defensa;
-            }
-            set
-            {
-                if(value >=0)
-                {
-                    this.defensa = value;
-                }
-                else
-                {
-                    this.defensa = 0;
-                } 
-            }
-        }
-
-        public Arco(int ataque, int defensa)
+        
+        public Arco(int ataque)
         {
             this.Ataque = ataque;
-            this.Defensa = defensa;
         }
     }
 }

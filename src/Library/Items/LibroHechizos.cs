@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Roleplay_Prog.Library
 {
-    public class LibroHechizos : IItem
+    public class LibroHechizos : IItemAtaque, IItemDefensa
     {
         public List<Spell> Spells = new List<Spell>();
         private int ataque;
