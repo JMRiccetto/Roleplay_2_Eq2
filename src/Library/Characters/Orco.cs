@@ -38,15 +38,15 @@ namespace Roleplay_Prog.Library
                 }
             }
         }
-        public IItem ItemOf{get;set;}
-        public IItem ItemDef{get;set;}
+        public IItemAtaque ItemOf{get;set;}
+        public IItemDefensa ItemDef{get;set;}
 
         public Orco(string nombre)
         {
             this.Nombre = nombre;
         }
 
-        public void CambiarItemOf(IItem mazo)
+        public void CambiarItemOf(IItemAtaque mazo)
         {
             this.ItemOf = mazo;
         }
@@ -55,7 +55,7 @@ namespace Roleplay_Prog.Library
         {
             this.ItemOf = null;
         }
-        public void CambiarItemDef(IItem yelmo)
+        public void CambiarItemDef(IItemDefensa yelmo)
         {
             this.ItemDef = yelmo;
         }

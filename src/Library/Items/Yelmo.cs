@@ -2,27 +2,8 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    public class Yelmo : IItem
+    public class Yelmo : IItemDefensa
     {
-        private int ataque;
-        public int Ataque
-        {
-            get
-            {
-                return this.ataque;
-            }
-            set
-            {
-                if(value >=0)
-                {
-                    this.ataque = value;
-                }
-                else
-                {
-                    this.ataque = 0;
-                }
-            }
-        }
         private int defensa;
         public int Defensa
         {
@@ -43,9 +24,8 @@ namespace Roleplay_Prog.Library
             }
         }
 
-        public Yelmo(int ataque, int defensa)
+        public Yelmo(int defensa)
         {
-            this.Ataque = ataque;
             this.Defensa = defensa;
         }
     }

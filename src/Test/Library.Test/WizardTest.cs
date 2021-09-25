@@ -19,7 +19,7 @@ namespace Test.Library
             LibroHechizos libroHechizos = new LibroHechizos();
             libroHechizos.Spells.Add(spell);
             this.wizard.CambiarItemOf(libroHechizos);
-            TunicaCuero tunicaCuero = new TunicaCuero(0,30);
+            TunicaCuero tunicaCuero = new TunicaCuero(30);
             this.wizard.CambiarItemDef(tunicaCuero);
 
             this.dummy = new Wizard("Jose");
@@ -104,7 +104,7 @@ namespace Test.Library
          [Test]
         public void CambiarItemDefTest()
         {
-            TunicaCuero tunicaCueroNu = new TunicaCuero(0,50);
+            TunicaCuero tunicaCueroNu = new TunicaCuero(50);
             this.wizard.CambiarItemDef(tunicaCueroNu);
             Assert.AreEqual(this.wizard.ItemDef, tunicaCueroNu);
         }
@@ -126,7 +126,7 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMenorOIgualQueArmaduraTest()
         {
-            IItem tunicaCuero = new TunicaCuero(0,60);
+            IItemDefensa tunicaCuero = new TunicaCuero(60);
             this.dummy.CambiarItemDef(tunicaCuero);
             this.wizard.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 80);
@@ -139,7 +139,7 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMayorQueArmaduraTest()
         {
-            IItem tunicaCuero = new TunicaCuero(0,20);
+            IItemDefensa tunicaCuero = new TunicaCuero(20);
             this.dummy.CambiarItemDef(tunicaCuero);
             this.wizard.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 50);
@@ -153,7 +153,7 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMayorQueArmaduraYVidaTest()
         {
-            IItem tunicaCuero = new TunicaCuero(0,0);
+            IItemDefensa tunicaCuero = new TunicaCuero(0);
             this.dummy.CambiarItemDef(tunicaCuero);
             Spell spellSuperior = new Spell(100,0);
             LibroHechizos libroHechizosSuperior = new LibroHechizos();

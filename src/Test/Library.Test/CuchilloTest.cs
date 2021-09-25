@@ -11,7 +11,7 @@ namespace Test.Library
         [SetUp]
         public void Setup()
         {
-            this.cuchillo = new Cuchillo(70,0);
+            this.cuchillo = new Cuchillo(70);
         }
         /*
             Es necesario probar la asignacion de un ataque valido para
@@ -33,26 +33,7 @@ namespace Test.Library
             this.cuchillo.Ataque = -20;
             Assert.AreEqual(this.cuchillo.Ataque, 0);
         }
-        /*
-            Es necesario probar la asignacion de una defensa valida para
-            poder confirmar que el setter funciona correctamente
-        */
-        [Test]
-        public void AsignarDefensaValida()
-        {
-            this.cuchillo.Defensa = 40;
-            Assert.AreEqual(this.cuchillo.Defensa, 40);
-        }
-        /*
-            Es necesario probar la asignacion de una defensa invalida para
-            poder confirmar que el setter funciona correctamente
-        */
-        [Test]
-        public void AsignarDefensaNegativa()
-        {
-            this.cuchillo.Defensa = -20;
-            Assert.AreEqual(this.cuchillo.Defensa, 0);
-        }
+        
     }
 
 

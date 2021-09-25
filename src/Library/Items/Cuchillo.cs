@@ -2,7 +2,7 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    public class Cuchillo : IItem
+    public class Cuchillo : IItemAtaque
 
         {
             
@@ -25,30 +25,10 @@ namespace Roleplay_Prog.Library
                     }
                 }
             }
-            private int defensa;
-            public int Defensa
-            {
-                get
-                {
-                    return this.defensa;
-                }
-                set
-                {
-                    if(value >=0)
-                    {
-                        this.defensa = value;
-                    }
-                    else
-                    {
-                        this.defensa = 0;
-                    } 
-                }
-            }
-
-            public Cuchillo(int ataque, int defensa)
+            
+            public Cuchillo(int ataque)
             {
                 this.Ataque = ataque;
-                this.Defensa = defensa;
             }
          }
 
