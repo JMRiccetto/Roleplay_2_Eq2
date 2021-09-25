@@ -160,7 +160,7 @@ namespace Test.Library
             libroHechizosSuperior.Spells.Add(spellSuperior);
             this.wizard.CambiarItemOf(libroHechizosSuperior);
             this.wizard.Atacar(this.dummy);
-            Assert.AreEqual(this.wizard.Vida, 0);
+            Assert.AreEqual(this.dummy.Vida, 0);
         }
         /*
             Es necesario probar este metodo para confirmar que al curarse queda con la misma vida inicial.

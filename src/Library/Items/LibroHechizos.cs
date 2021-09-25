@@ -4,7 +4,7 @@ namespace Roleplay_Prog.Library
 {
     public class LibroHechizos : IItem
     {
-        public List<Spell> Spells { get; set; }
+        public List<Spell> Spells = new List<Spell>();
         private int ataque;
         public int Ataque
         {
