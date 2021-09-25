@@ -13,7 +13,7 @@ namespace Test.Library
         [SetUp]
         public void Setup()
         {
-            this.spell = new Spell(30);
+            this.spell = new Spell(30,0);
         }
 
         /*
@@ -35,6 +35,26 @@ namespace Test.Library
         {
             this.spell.Ataque = -10;
             Assert.AreEqual(this.spell.Ataque, 0);
+        }
+        /*
+            Es necesario probar la asignacion de una defensa valida para
+            poder confirmar que el setter funciona correctamente
+        */
+        [Test]
+        public void AsignarDefensaValida()
+        {
+            this.spell.Defensa = 30;
+            Assert.AreEqual(this.spell.Defensa, 30);
+        }
+        /*
+            Es necesario probar la asignacion de una defensa invalida para
+            poder confirmar que el setter funciona correctamente
+        */
+        [Test]
+        public void AsignarDefensaNegativa()
+        {
+            this.spell.Defensa = -20;
+            Assert.AreEqual(this.spell.Defensa, 0);
         }
     }
 }

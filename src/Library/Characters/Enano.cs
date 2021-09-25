@@ -2,14 +2,7 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    /*
-        Para la parte 3 decidimos implementar los metodos a 
-        esta clase porque la consideramos la experta
-        en la informacion que se necesita para poder llevarlos a cabo.
-        A partir de este se rompe el SRP ya que hay varias
-        razones de cambio pero lo vimos necesario.
-    */
-    public class Enano
+    public class Enano : ICharacter
     {
         private string nombre;
         public string Nombre
@@ -45,15 +38,15 @@ namespace Roleplay_Prog.Library
                 }
             }
         }
-        public Cuchillo ItemOf;
-        public Escudo ItemDef;
+        public IItem ItemOf{get;set;}
+        public IItem ItemDef{get;set;}
 
         public Enano(string nombre)
         {
             this.Nombre = nombre;
         }
 
-        public void CambiarItemOf(Cuchillo cuchillo)
+        public void CambiarItemOf(IItem cuchillo)
         {
             this.ItemOf = cuchillo;
         }
@@ -62,7 +55,7 @@ namespace Roleplay_Prog.Library
         {
             this.ItemOf = null;
         }
-        public void CambiarItemDef(Escudo escudo)
+        public void CambiarItemDef(IItem escudo)
         {
             this.ItemDef = escudo;
         }
@@ -77,12 +70,12 @@ namespace Roleplay_Prog.Library
             return this.ItemOf.Ataque;
         }
 
-        public void DanioRecibido(int danio)
+        public void Atacar(ICharacter chara)
         {
-            if(this.ItemDef.Defensa < danio)
+            if(chara.ItemDef.Defensa < this.GetAtaque() )
             {
-                danio -= this.ItemDef.Defensa;
-                this.Vida -= danio;
+                int danio = this.GetAtaque() - chara.ItemDef.Defensa;
+                chara.Vida -= danio;
             }
         }
 

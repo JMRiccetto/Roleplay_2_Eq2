@@ -2,14 +2,7 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    /*
-        Para la parte 3 decidimos implementar los metodos a 
-        esta clase porque la consideramos la experta
-        en la informacion que se necesita para poder llevarlos a cabo.
-        A partir de este se rompe el SRP ya que hay varias
-        razones de cambio pero lo vimos necesario.
-    */
-    public class Orco
+    public class Wizard : ICharacter
     {
         private string nombre;
         public string Nombre
@@ -26,7 +19,7 @@ namespace Roleplay_Prog.Library
                 }
             }
         }
-        private int vida = 130;
+        private int vida = 80;
         public int Vida
         {
             get
@@ -45,26 +38,26 @@ namespace Roleplay_Prog.Library
                 }
             }
         }
-        public Mazo ItemOf{get;set;}
-        public Yelmo ItemDef{get;set;}
+        public IItem ItemOf{get;set;}
+        public IItem ItemDef{get;set;}
 
-        public Orco(string nombre)
+        public Wizard(string nombre)
         {
             this.Nombre = nombre;
         }
 
-        public void CambiarItemOf(Mazo mazo)
+        public void CambiarItemOf(IItem libroHechizos)
         {
-            this.ItemOf = mazo;
+            this.ItemOf = libroHechizos;
         }
 
         public void QuitarItemOf()
         {
             this.ItemOf = null;
         }
-        public void CambiarItemDef(Yelmo yelmo)
+        public void CambiarItemDef(IItem tunicaCuero)
         {
-            this.ItemDef = yelmo;
+            this.ItemDef = tunicaCuero;
         }
 
         public void QuitarItemDef()
@@ -77,18 +70,19 @@ namespace Roleplay_Prog.Library
             return this.ItemOf.Ataque;
         }
 
-        public void DanioRecibido(int danio)
+        public void Atacar(ICharacter chara)
         {
-            if(this.ItemDef.Defensa < danio)
+            if(chara.ItemDef.Defensa < this.GetAtaque() )
             {
-                danio -= this.ItemDef.Defensa;
-                this.Vida -= danio;
+                int danio = this.GetAtaque() - chara.ItemDef.Defensa;
+                chara.Vida -= danio;
             }
         }
 
         public void Curarse()
         {
-            this.Vida = 130;
+            this.Vida = 80;
         }
     }
+
 }
